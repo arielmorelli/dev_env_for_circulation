@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+    pypi:
+        image: "pypiserver/pypiserver:latest"
+        ports:
+            - 44444:8080
+
