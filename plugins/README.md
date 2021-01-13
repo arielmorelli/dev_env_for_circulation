@@ -25,6 +25,8 @@ virtualenv env
 source env/bin/activate
 pip install -U pip
 pip install -r requirements.txt
+cd api/admin
+npm install
 ```
 
 ## Add new plugins
