@@ -1,29 +1,5 @@
 version: '3.8'
 services:
-    # deploy:
-    #    image: nypl/circ-webapp
-    #    ports:
-    #        - 5411:80
-    #    environment:
-    #        - SIMPLIFIED_PRODUCTION_DATABASE='postgres://simplified:test@postgres:5432/simplified_circ_db' 
-    #        #- SIMPLIFIED_DB_TASK=""
-    #    depends_on:
-    #        - postgres
-    #        - elasticsearch
-    #    links:
-    #        - postgres
-    #        - elasticsearch
-
-    # scripts:
-    #     image: nypl/circ-scripts
-    #     environment:
-    #         - SIMPLIFIED_PRODUCTION_DATABASE='postgres://simplified:test@postgres:5432/simplified_circ_db' 
-    #         - SIMPLIFIED_DB_TASK="init"
-    #     depends_on:
-    #         - postgres
-    #     links:
-    #         - postgres
-
     elasticsearch:
         build:
             context: .
@@ -45,7 +21,7 @@ services:
             - POSTGRES_USER=simplified
             - POSTGRES_PASSWORD=test
         volumes:
-            - ./volumes:/var/lib/postgresql
+            - ./volumes:/var/lib/postgresql/data
 
     postgres_test:
         build:
