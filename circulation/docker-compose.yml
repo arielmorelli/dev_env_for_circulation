@@ -3,7 +3,7 @@ services:
     elasticsearch:
         build:
             context: .
-            dockerfile: compose/elasticsearch/Dockerfile
+            dockerfile: elasticsearch/Dockerfile
         ports:
             - 9200:9200
             - 9300:9300
@@ -13,7 +13,7 @@ services:
     postgres:
         build:
             context: .
-            dockerfile: compose/postgres/Dockerfile
+            dockerfile: postgres/Dockerfile
         ports:
             - 5432:5432
         environment:
@@ -26,7 +26,7 @@ services:
     postgres_test:
         build:
             context: .
-            dockerfile: compose/postgres/Dockerfile
+            dockerfile: postgres/Dockerfile
         ports:
             - 5433:5432
         environment:
