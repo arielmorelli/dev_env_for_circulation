@@ -1,4 +1,0 @@
-docker exec -ti dpla_exchange_carts_postgres_1 bash
-psql -U user -W dpla_exchange_cart_api
-
-insert into library values ('262', 'Lib Test', 'abcde12356');
