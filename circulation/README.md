@@ -8,6 +8,7 @@ It will up:
 * Postgres for tests
 * Minio
 * Elasticsearch
+* PyPI server
 
 To run the circulation API or scripts, it should run with local machine python in the circulation directory.
 
