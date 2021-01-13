@@ -2,4 +2,12 @@
 
 My custom docker-compose enviroment to run the [NYPL Simplified Circulation](https://github.com/NYPL-Simplified/circulation).
 
-To simple run use: `docker-compose up`
+To run the env just run: `docker-compose up`
+It will up:
+* Postgres for dev
+* Postgres for tests
+* Minio
+* Elasticsearch
+
+To run the circulation API or scripts, it should run with local machine python in the circulation directory.
+
