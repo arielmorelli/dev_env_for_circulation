@@ -2,7 +2,7 @@
 
 ## Setting the environment
 
-### Dockerzied enviroment
+### Dockerized enviroment
 To make things easier, was created a single docker-compose running all that is necessary to run CM.
 To use this env:
 
@@ -13,20 +13,28 @@ docker-compose up
 ```
 
 ### Clone Circulation Manager with plugin enabled.
-Once I'm doing POCs, this forked repository must be used: https://github.com/arielmorelli/circulation in the branch `add_plugin_support`. Create a virtualenv and add all dependencies.
-
+This forked repositories must be used for now:
+* https://github.com/arielmorelli/circulation in the branch `develop`
+* https://github.com/arielmorelli/server_code in the branch `develop`
+* https://github.com/arielmorelli/simplye-circulation-web in the branch `master`
+Instead of init the git submodules, we're cloning the repositories and adding simbolic links, when necessary.
+Create a virtualenv and add all dependencies.
+This script do all of this:
 ```bash
-git clone https://github.com/arielmorelli/circulation circulation-plugin
-cd circulation-plugin
-git checkout add_plugin_support
-git submodule init
-git submodule update
+git clone https://github.com/arielmorelli/circulation circulation
+git clone https://github.com/arielmorelli/simplye-circulation-web circulation-web
+cd circulation-web
+npm install
+npm link
+cd ../circulation/api/admin
+npm link simplified-circulation-web
+cd ../..
+git clone https://github.com/arielmorelli/server_core core
+echo "core/" >> .git/info/exclude
 virtualenv env
 source env/bin/activate
 pip install -U pip
 pip install -r requirements.txt
-cd api/admin
-npm install
 ```
 
 ## Add new plugins
