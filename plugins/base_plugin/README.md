@@ -11,37 +11,28 @@ Describre which routes are added with this plugin
 Describre what script will run with this plugin
 * HelloWorld: print a hello_world in the log everytime it runs
 
-
 # Upload to a PyPI server
-To upload a plugin to a PyPI server, first must configure the `~/.pypirc` file. Should looks like:
-```bash
-[distutils]
-index-servers =
-  pypi
-  local_pypi
 
-[pypi]
-repository=https://pypi.python.org/pypi
-username= # username
-password= # password
+To upload a package twine is used.
+`pip install twine`
 
-[<pypi_server_name>]
-repository: <pypi_server_url>
-username= # if no username is required, leave with anything but blank
-password = # if no password is required, leave with anything but blank
-```
+1. Build the package
+`python setup.py sdist bdist_wheel`
 
-To upload, just run:
-`python setup.py sdist upload -r <pypi_server_name>`
+2. Upload to a PyPI server
+`twine upload --repository-url <pypi_server_name> dist/*`
 
-Note: it's legacy, but works fine for now! Updating to twine if once get stable
+Note: To use a local pypi server, please follow [this tutorial](https://github.com/arielmorelli/dev_env_for_circulation/tree/main/plugins)
 
+# Installing the plugin
 
-## Appendix
-To create a local PyPI serve can be created using docker just run:
-`docker run -p 44444:8080 pypiserver/pypiserver:latest -P . -a . -v`
-(it wo
+Please use `pip install -U --index-url <pypi_server_name> cm-plugin-name`
 
-[Documentation](https://hub.docker.com/r/pypiserver/pypiserve).
+# Running tests
 
+Once the plugin needs the server_core packages to run, it's necessary to have it under the core folder.
+To to this, clone the server_core:
+`git clone https://github.com/arielmorelli/server_core core`
+
+To run tests, just run `nosetests tests/` (don't forget to activate the virtualenv activated and install all requirements packages)
 
